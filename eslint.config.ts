@@ -1,12 +1,15 @@
 import css from "@eslint/css";
 import js from "@eslint/js";
-import json from "@eslint/json";
 import markdown from "@eslint/markdown";
+import eslintPluginJsonc from "eslint-plugin-jsonc";
 import { defineConfig } from "eslint/config";
 import globals from "globals";
 import tseslint from "typescript-eslint";
 
 export default defineConfig([
+  {
+    ignores: [".astro/**/*", "dist/**/*", "node_modules/**/*"],
+  },
   {
     files: ["**/*.{js,mjs,cjs,ts,mts,cts,jsx,tsx}"],
     plugins: { js },
@@ -14,24 +17,7 @@ export default defineConfig([
     languageOptions: { globals: globals.browser },
   },
   tseslint.configs.recommended,
-  {
-    files: ["**/*.json"],
-    plugins: { json },
-    language: "json/json",
-    extends: ["json/recommended"],
-  },
-  {
-    files: ["**/*.jsonc"],
-    plugins: { json },
-    language: "json/jsonc",
-    extends: ["json/recommended"],
-  },
-  {
-    files: ["**/*.json5"],
-    plugins: { json },
-    language: "json/json5",
-    extends: ["json/recommended"],
-  },
+  eslintPluginJsonc.configs["flat/prettier"],
   {
     files: ["**/*.md"],
     plugins: { markdown },
