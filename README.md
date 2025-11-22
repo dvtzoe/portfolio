@@ -1,1 +1,1 @@
-# [WIP] Portfolio site for `dvtzoe`
+# \[WIP\] Portfolio site for `dvtzoe`
